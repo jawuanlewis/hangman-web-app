@@ -1,0 +1,88 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Freeman';
+    src: url('fonts/Freeman/Freeman-Regular.ttf');
+}
+
+body {
+    font-family: 'Freeman', sans-serif;
+    background-color: #E1E1E1;
+    color: #002E4C;
+}
+
+header {
+    background: #1C8CDB;
+    height: 150px;
+    line-height: 150px;
+    padding-left: 50px;
+    font-size: xx-large;
+}
+
+nav {
+    background-color: #002E4C;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 50px;
+    box-shadow: 0 8px 30px gray;
+    & ul li {
+        display: inline;
+        margin: 0 20px;
+        & a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+}
+
+main {
+    padding: 50px;
+}
+
+.levels-container {
+    max-width: fit-content;
+    margin: auto;
+}
+
+.level-container {
+    display: inline-block;
+    text-align: center;
+    padding: 0 15px;
+    & img {
+        object-fit: cover;
+    }
+    & label {
+        display: block;
+        margin: 20px 0;
+        font-size: x-large;
+    }
+}
+
+#level-frame {
+    width: 280px;
+    height: 280px;
+    border-radius: 20px;
+}
+
+footer {
+    background: #1C8CDB;
+    position: fixed;
+    display: flex;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -8px 30px gray;
+    & ul {
+        max-width: fit-content;
+        margin: auto;
+        list-style-type: none;
+        display: flex;
+        & li {
+            margin: 10px 10px;
+        }
+    }
+}
