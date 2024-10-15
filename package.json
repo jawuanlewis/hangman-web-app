@@ -6,7 +6,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jawuan Lewis",
   "license": "ISC",
-  "description": ""
+  "description": "The game 'Hangman' developed as a web-based application",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  }
 }
