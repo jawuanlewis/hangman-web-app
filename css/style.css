@@ -18,16 +18,29 @@ body {
 
 header {
     background: #1C8CDB;
-    height: 150px;
-    line-height: 150px;
     padding-left: 50px;
-    font-size: xx-large;
+}
+
+.main-header {
+    height: 15vh;
+    line-height: 15vh;
+    & h1 {
+        font-size: 4vw;
+    }
+}
+
+.game-header {
+    height: 12vh;
+    line-height: 12vh;
+    & h1 {
+        font-size: 3vw;
+    }
 }
 
 nav {
     background-color: #002E4C;
-    height: 50px;
-    line-height: 50px;
+    height: 44px;
+    line-height: 44px;
     padding-left: 50px;
     box-shadow: 0 8px 30px gray;
     & ul li {
@@ -52,21 +65,40 @@ main {
 .level-container {
     display: inline-block;
     text-align: center;
-    padding: 0 15px;
+    padding: 0 20px;
     & img {
         object-fit: cover;
     }
     & label {
         display: block;
         margin: 20px 0;
-        font-size: x-large;
+        font-size: 2vw;
     }
 }
 
-#level-frame {
+.level-frame {
     width: 280px;
     height: 280px;
     border-radius: 20px;
+    &:hover {
+        animation: backlight 0.2s linear forwards;
+    }
+}
+
+.img-hover {
+    transition: all 0.3s ease;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes backlight {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(0, 123, 255, 1), 0 0 40px rgba(0, 123, 255, 0.7);
+    }
 }
 
 footer {
@@ -82,14 +114,7 @@ footer {
         list-style-type: none;
         display: flex;
         & li {
-            margin: 10px 10px;
+            margin: 15px 10px;
         }
-    }
-}
-
-.social-icon {
-    transition: transform 0.3s ease;
-    &:hover {
-        transform: scale(1.1);
     }
 }
