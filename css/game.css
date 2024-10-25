@@ -1,0 +1,7 @@
+.game-header {
+    height: 12vh;
+    & h1 {
+        font-size: calc(0.5 * 9.6vh);
+        line-height: 1.2;
+    }
+}
