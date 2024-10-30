@@ -11,9 +11,21 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'css')));
 app.use(express.static(path.join(__dirname, 'assets')));
 
-// Set up basic routing
+// Routing
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'home.html'));
+});
+app.get('/sports', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'sports.html'));
+});
+app.get('/movies', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'movies.html'));
+});
+app.get('/games', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'games.html'));
+});
+app.get('/phrases', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'phrases.html'));
 });
 
 // Start the server

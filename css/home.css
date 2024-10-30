@@ -1,0 +1,40 @@
+.home-header {
+    height: 15vh;
+    & h1 {
+        font-size: calc(0.5 * 12vh);
+        line-height: 1.2;
+    }
+}
+
+main {
+    margin: 50px;
+    padding-top: calc(15vh + 40px);
+}
+
+.levels-container {
+    max-width: fit-content;
+    margin: auto;
+}
+
+.level-container {
+    display: inline-block;
+    text-align: center;
+    margin: 0 20px;
+    & img {
+        object-fit: cover;
+    }
+    & label {
+        display: block;
+        margin: 30px 0;
+        font-size: calc(0.5 * 8vh);
+    }
+}
+
+.level-frame {
+    width: 280px;
+    height: 280px;
+    border-radius: 20px;
+    &:hover {
+        animation: backlight 0.2s linear forwards;
+    }
+}
