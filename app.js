@@ -13,22 +13,13 @@ app.use(express.static(path.join(__dirname, 'assets')));
 
 // Routing
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'home.html'));
+    res.sendFile(path.join(__dirname, 'views', 'homepage.html'));
 });
-app.get('/sports', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'sports.html'));
-});
-app.get('/movies', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'movies.html'));
-});
-app.get('/games', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'games.html'));
-});
-app.get('/phrases', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'phrases.html'));
+app.get('/game', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'gamepage.html'));
 });
 
-// Start the server
+// Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

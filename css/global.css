@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+
+/************
+ CSS at-rules
+ ************/
+
 @font-face {
     font-family: 'Freeman';
     src: url('fonts/Freeman/Freeman-Regular.ttf');
@@ -19,12 +24,10 @@
     }
 }
 
-.img-hover {
-    transition: all 0.3s ease;
-    &:hover {
-        transform: scale(1.1);
-    }
-}
+
+/*************
+ HTML elements
+ *************/
 
 body {
     font-family: 'Freeman', sans-serif;
@@ -55,13 +58,6 @@ nav {
     }
 }
 
-#header-nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
 footer {
     background: #1C8CDB;
     position: fixed;
@@ -77,5 +73,30 @@ footer {
         & li {
             margin: 10px;
         }
+    }
+}
+
+
+/************
+ HTML classes 
+ ************/
+
+.img-hover {
+    transition: all 0.3s ease;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.header-and-nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.head-text {
+    & label {
+        font-size: clamp(1rem, 3.5vw, 3.5vh);
     }
 }
