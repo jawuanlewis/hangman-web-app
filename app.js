@@ -1,14 +1,14 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-//const db = require('./database');
 
 // Middleware for parsing request bodies
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Serve static files from the following directories
+// Serve all the needed app files
 app.use(express.static(path.join(__dirname, 'css')));
+app.use(express.static(path.join(__dirname, 'scripts')));
 app.use(express.static(path.join(__dirname, 'assets')));
 
 // Routing
