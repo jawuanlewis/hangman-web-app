@@ -81,7 +81,7 @@ footer {
  HTML classes 
  ************/
 
-.img-hover {
+.item-hover {
     transition: all 0.3s ease;
     &:hover {
         transform: scale(1.1);
