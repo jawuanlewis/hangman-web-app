@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hangman</title>
     <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="gamepage.css">
-    <script src="index.js" type="module"></script>
+    <link rel="stylesheet" href="homepage.css">
+    <script src="initialize.js" defer></script>
 </head>
 <body>
     <div class="header-and-nav">
-        <header class="gamepage-header">
-            <h1>Sports</h1>
+        <header class="homepage-header">
+            <h1>Hangman</h1>
         </header>
         
         <nav>
@@ -24,21 +24,27 @@
     </div>
 
     <main>
-        <section class="left-section">
-            <p>This will display the stick figure.</p>
-        </section>
-        <section class="right-section">
-            <div class="head-text">
-                <label id="game-status">You have 6 attempt(s) remaining.</label>
-                <br><br>
-                <label id="game-message">Guess a letter below:</label>
+        <section id="home">
+            <div class="head-text"><label><%= introMessage %></label></div>
+            <br><br>
+            <div class="levels-container">
+                <div class="level-container">
+                    <img src="images/sports.jpeg" class="level-frame item-hover" />
+                    <label>Sports</label>
+                </div>
+                <div class="level-container">
+                    <img src="images/movies.jpeg" class="level-frame item-hover" />
+                    <label>Movies</label>
+                </div>
+                <div class="level-container">
+                    <img src="images/video-games.jpeg" class="level-frame item-hover" />
+                    <label>Video Games</label>
+                </div>
+                <div class="level-container">
+                    <img src="images/phrases.jpeg" class="level-frame item-hover" />
+                    <label>Fun Phrases</label>
+                </div>
             </div>
-            <br><br><br><br>
-            <div class="head-text">
-                <label id="current-word">___ ______</label>
-            </div>
-            <br><br><br>
-            <div id="keyboard-container"></div>
         </section>
     </main>
 

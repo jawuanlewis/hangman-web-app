@@ -39,6 +39,7 @@ main {
     width: 250px;
     height: 250px;
     border-radius: 20px;
+    cursor: pointer;
     &:hover {
         animation: backlight 0.2s linear forwards;
     }
