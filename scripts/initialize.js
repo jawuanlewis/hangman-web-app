@@ -1,7 +1,7 @@
 const levels = document.querySelectorAll(".level-frame");
 
-levels.forEach((level, index) => {
+levels.forEach((level) => {
     level.addEventListener("click", () => {
-        window.location.href = `/game?level=${index + 1}`;
+        window.location.href = `/game?level=${level.id}`;
     });
 });

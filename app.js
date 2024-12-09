@@ -4,6 +4,8 @@ const session = require('express-session');
 const path = require('path');
 const app = express();
 
+const { connectToDB, getRandomWord, closeConnection } = require('./scripts/database');
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -18,32 +20,23 @@ app.use(session({
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use(express.static(path.join(__dirname, 'assets')));
 app.use(express.static(path.join(__dirname, 'css')));
 app.use(express.static(path.join(__dirname, 'scripts')));
-app.use(express.static(path.join(__dirname, 'assets')));
 
 // Routing
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+    await connectToDB();
     res.render('homepage', { introMessage: 'Welcome! Choose a level to play below:' });
 });
-app.get('/game', (req, res) => {
-    const level = req.query.level ? parseInt(req.query.level) : 1;
+app.get('/game', async (req, res) => {
+    const answer = await getRandomWord(req.query.level.toLowerCase());
 
-    // Initialize game state
-    const levelSettings = {
-        1: { level: 'Sports', attempts: 6, answer: 'ICE HOCKEY' },
-        2: { level: 'Movies', attempts: 6, answer: 'THE GODFATHER' },
-        3: { level: 'Video Games', attempts: 6, answer: 'SUPER MARIO ODYSSEY' },
-        4: { level: 'Fun Phrases', attempts: 6, answer: 'DOWN FOR THE COUNT' }
-    };
-    const settings = levelSettings[level];
+    req.session.level = req.query.level;
+    req.session.attempts = 6;
+    req.session.answer = answer;
+    req.session.currentProgress = answer.split('').map(char => (char === ' ' ? ' ' : '_')).join('');
 
-    req.session.level = settings.level;
-    req.session.attempts = settings.attempts;
-    req.session.answer = settings.answer;
-    req.session.currentProgress = settings.answer.split('').map(char => (char === ' ' ? ' ' : '_')).join('');
-
-    // Render the initial game page
     res.render('gamepage', {
         level: req.session.level,
         attempts: req.session.attempts,
@@ -99,4 +92,10 @@ app.post('/game/guess', (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+// Close DB connection on app shutdown
+process.on('SIGINT', async () => {
+    await closeConnection();
+    process.exit(0);
 });
