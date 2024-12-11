@@ -5,8 +5,7 @@ const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri);
 let isConnected = false;
 
-async function connectToDB() 
-{
+async function connectToDB() {
     try {
         if (!isConnected) {
             await client.connect();
@@ -20,8 +19,7 @@ async function connectToDB()
     }
 }
 
-async function getRandomWord(category) 
-{
+async function getRandomWord(category) {
     const db = await connectToDB();
     const collection = db.collection('words');
 
@@ -34,8 +32,7 @@ async function getRandomWord(category)
     return randomWord.length > 0 ? randomWord[0].word : null;
 }
 
-async function closeConnection() 
-{
+async function closeConnection() {
     if (isConnected) {
         console.log('Closing MongoDB connection');
         await client.close();

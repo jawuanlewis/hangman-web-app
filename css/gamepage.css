@@ -62,3 +62,23 @@ main {
         }
     }
 }
+
+#game-end-container {
+    max-width: fit-content;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #979797;
+    border-radius: 10px;
+    & button {
+        font-family: 'Freeman', sans-serif;
+        font-size: clamp(1rem, 4.4vw, 4.4vh);
+        font-weight: bold;
+        color: #000;
+        border: none;
+        width: 250px;
+        height: 80px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 12px;
+    }
+}

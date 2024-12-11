@@ -1,17 +1,29 @@
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-const container = document.getElementById("keyboard-container");
+const keyboardContainer = document.getElementById("keyboard-container");
+const gameEndContainer = document.getElementById("game-end-container");
 
-// Create the keyboard of letters
-letters.forEach(letter => {
-    const button = document.createElement("button");
-    button.textContent = letter;
-    button.dataset.letter = letter;
-    button.onclick = () => handleGuess(letter);
-    container.appendChild(button);
-});
+// If these elements don't have "display" set to "none",
+// they can be initialized and displayed
+if (!keyboardContainer.style.display) {
+    createKeyboard(keyboardContainer);
+}
+if (!gameEndContainer.style.display) {
+    handleGameEnd(gameEndContainer, keyboardContainer);
+}
 
-async function handleGuess(letter) 
-{
+
+function createKeyboard(container) {
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    letters.forEach(letter => {
+        const button = document.createElement("button");
+        button.textContent = letter;
+        button.dataset.letter = letter;
+        button.onclick = () => handleGuess(letter);
+        container.appendChild(button);
+    });
+    loadKeyboardState();
+}
+
+async function handleGuess(letter) {
     try {
         const response = await fetch('/game/guess', {
             method: 'POST',
@@ -23,10 +35,16 @@ async function handleGuess(letter)
         }
         const data = await response.json();
 
-        document.getElementById("game-status").textContent = data.statusMessage;
+        document.getElementById("status-message").textContent = data.statusMessage;
+        document.getElementById("extra-message").textContent = data.extraMessage;
         document.getElementById("game-word").textContent = data.currentProgress;
         if (data.gameOver) {
-            document.getElementById("game-message").textContent = '';
+            // Safeguard so the player can't guess again unless starting new level
+            const buttons = document.querySelectorAll("#keyboard-container button");
+            buttons.forEach(button => {
+                button.disabled = true;
+            });
+            handleGameEnd(gameEndContainer, keyboardContainer);
         }
     } catch (error) {
         console.error(error);
@@ -36,4 +54,59 @@ async function handleGuess(letter)
     // Letters cannot be guessed again
     const button = document.querySelector(`[data-letter="${letter}"]`);
     button.disabled = true;
+    saveKeyboardState();
+}
+
+function handleGameEnd(container, keyboard) {
+    const level = document.getElementById("level-title").textContent;
+
+    const playAgain = document.createElement("button");
+    playAgain.classList.add("item-hover");
+    playAgain.textContent = "Play Again";
+    playAgain.style.backgroundColor = "#7AC860";
+    playAgain.onclick = () => {
+        resetKeyboardState();
+        window.location.href = `/game/init?level=${level}`;
+    };
+
+    const mainMenu = document.createElement("button");
+    mainMenu.classList.add("item-hover");
+    mainMenu.textContent = "Main Menu";
+    mainMenu.style.backgroundColor = "#E74747";
+    mainMenu.onclick = () => {
+        resetKeyboardState();
+        window.location.href = "/";
+    };
+
+    keyboard.style.display = "none";
+    container.removeAttribute("style");
+    container.append(playAgain, mainMenu);
+}
+
+function saveKeyboardState() {
+    const buttons = document.querySelectorAll("#keyboard-container button");
+    const state = {};
+    buttons.forEach(button => {
+        state[button.dataset.letter] = button.disabled;
+    });
+    sessionStorage.setItem("keyboardState", JSON.stringify(state));
+}
+
+function loadKeyboardState() {
+    const state = JSON.parse(sessionStorage.getItem("keyboardState")) || {};
+    const buttons = document.querySelectorAll("#keyboard-container button");
+    if (Object.keys(state).length !== 0) {
+        buttons.forEach(button => {
+            if (state[button.dataset.letter])
+                button.disabled = true;
+        });
+    }
+}
+
+function resetKeyboardState() {
+    sessionStorage.removeItem("keyboardState");
+    const buttons = document.querySelectorAll("#keyboard-container button");
+    buttons.forEach(button => {
+        button.disabled = false;
+    });
 }

@@ -29,21 +29,28 @@ app.get('/', async (req, res) => {
     await connectToDB();
     res.render('homepage', { introMessage: 'Welcome! Choose a level to play below:' });
 });
-app.get('/game', async (req, res) => {
+app.get('/game', (req, res) => {
+    res.render('gamepage', {
+        level: req.session.level,
+        attempts: req.session.attempts,
+        currentProgress: req.session.currentProgress,
+        statusMessage: req.session.statusMessage,
+        extraMessage: req.session.extraMessage,
+        gameOver: req.session.gameOver
+    });
+});
+app.get('/game/init', async (req, res) => {
     const answer = await getRandomWord(req.query.level.toLowerCase());
 
     req.session.level = req.query.level;
     req.session.attempts = 6;
     req.session.answer = answer;
     req.session.currentProgress = answer.split('').map(char => (char === ' ' ? ' ' : '_')).join('');
+    req.session.gameOver = false;
+    req.session.statusMessage = `You have ${req.session.attempts} attempt(s) remaining.`;
+    req.session.extraMessage = "Guess a letter below:";
 
-    res.render('gamepage', {
-        level: req.session.level,
-        attempts: req.session.attempts,
-        currentProgress: req.session.currentProgress,
-        statusMessage: `You have ${req.session.attempts} attempt(s) remaining.`,
-        gameOver: false
-    });
+    res.redirect('/game');
 });
 
 // API endpoint for handling guesses
@@ -66,25 +73,26 @@ app.post('/game/guess', (req, res) => {
     }
     req.session.currentProgress = updatedProgress;
 
-    let statusMessage = '';
-    let gameOver = false;
     if (req.session.attempts <= 0) {
         req.session.currentProgress = answer;
-        statusMessage = `Sorry! You have run out of guesses. The word is:`;
-        gameOver = true;
+        req.session.statusMessage = "Sorry! You have run out of guesses. The word is:";
+        req.session.extraMessage = "";
+        req.session.gameOver = true;
     } else if (updatedProgress === answer) {
-        statusMessage = `Congratulations! You have correctly guessed the word.`;
-        gameOver = true;
+        req.session.statusMessage = "Congratulations! You have correctly guessed the word.";
+        req.session.extraMessage = "";
+        req.session.gameOver = true;
     } else {
-        statusMessage = `You have ${req.session.attempts} attempt(s) remaining.`;
+        req.session.statusMessage = `You have ${req.session.attempts} attempt(s) remaining.`;
     }
 
     res.json({
         level: req.session.level,
         attempts: req.session.attempts,
         currentProgress: req.session.currentProgress,
-        statusMessage,
-        gameOver
+        statusMessage: req.session.statusMessage,
+        extraMessage: req.session.extraMessage,
+        gameOver: req.session.gameOver
     });
 });
 

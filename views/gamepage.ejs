@@ -12,7 +12,7 @@
 <body>
     <div class="header-and-nav">
         <header class="gamepage-header">
-            <h1><%= level %></h1>
+            <h1 id="level-title"><%= level %></h1>
         </header>
         
         <nav>
@@ -29,16 +29,22 @@
         </section>
         <section class="right-section">
             <div class="head-text">
-                <label id="game-status"><%= statusMessage %></label>
+                <label id="status-message"><%= statusMessage %></label>
                 <br><br>
-                <label id="game-message">Guess a letter below:</label>
+                <label id="extra-message"><%= extraMessage %></label>
             </div>
             <br><br><br><br>
             <div class="head-text">
                 <label id="game-word"><%= currentProgress %></label>
             </div>
             <br><br><br>
-            <div id="keyboard-container"></div>
+            <% if (gameOver) { %>
+                <div id="keyboard-container" style="display: none;"></div>
+                <div id="game-end-container"></div>
+            <% } else { %>
+                <div id="keyboard-container"></div>
+                <div id="game-end-container" style="display: none;"></div>
+            <% } %>
         </section>
     </main>
 
