@@ -1,13 +1,10 @@
-/* HTML elements */
+/* Page Sections */
 
 main {
     display: flex;
     margin: 50px;
     padding-top: calc(12vh + 40px);
 }
-
-
-/* HTML classes */
 
 .gamepage-header {
     height: 12vh;
@@ -19,17 +16,37 @@ main {
 
 .left-section {
     width: 40%;
+    padding: 25px;
 }
 
 .right-section {
     width: 60%;
-    padding: 20px;
+    padding: 25px;
 }
 
 
-/* HTML IDs */
+/* Hangman Figure */
 
-#game-word {
+#hangman-background {
+    display: flex;
+    justify-content: center;
+    background-color: #002E4C;
+    border: 5px solid black;
+    border-radius: 10px;
+    box-sizing: border-box;
+    max-width: 30vw;
+    margin: 0 auto;
+}
+
+#hangman-display {
+    width: 100%;
+    height: auto;
+}
+
+
+/* Game Components */
+
+#current-progress {
     letter-spacing: 20px;
 }
 

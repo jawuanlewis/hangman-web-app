@@ -1,12 +1,9 @@
-/* HTML elements */
+/* Page Sections */
 
 main {
     margin: 50px;
     padding-top: calc(15vh + 40px);
 }
-
-
-/* HTML classes */
 
 .homepage-header {
     height: 15vh;
@@ -16,7 +13,10 @@ main {
     }
 }
 
-.levels-container {
+
+/* Game Levels */
+
+#levels-container {
     max-width: fit-content;
     margin: auto;
 }

@@ -6,9 +6,7 @@
 }
 
 
-/************
- CSS at-rules
- ************/
+/* CSS at-rules */
 
 @font-face {
     font-family: 'Freeman';
@@ -25,9 +23,7 @@
 }
 
 
-/*************
- HTML elements
- *************/
+/* Page Sections */
 
 body {
     font-family: 'Freeman', sans-serif;
@@ -77,9 +73,7 @@ footer {
 }
 
 
-/************
- HTML classes 
- ************/
+/* Globally Used Styles */
 
 .item-hover {
     transition: all 0.3s ease;
