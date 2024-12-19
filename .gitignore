@@ -13,3 +13,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Environment Files ###
+.env

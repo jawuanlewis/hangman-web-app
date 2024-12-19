@@ -6,50 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hangman</title>
     <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="home.css">
-    <script defer src="app.js"></script> <!-- defer ensures it loads after the HTML -->
+    <link rel="stylesheet" href="homepage.css">
+    <script src="initialize.js" defer></script>
 </head>
 <body>
-    <div id="header-nav">
-        <header class="home-header">
+    <div class="header-and-nav">
+        <header class="homepage-header">
             <h1>Hangman</h1>
         </header>
         
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/">How to Play</a></li>
+                <li><a href="/" class="nav-option">Home</a></li>
+                <!-- <li><a href="/">How to Play</a></li> -->
             </ul>
         </nav>
     </div>
 
     <main>
         <section id="home">
-            <h1>Welcome! Choose a level to play below:</h1>
-            <br /><br />
-            <div class="levels-container">
+            <div class="head-text"><label><%= introMessage %></label></div>
+            <br><br>
+            <div id="levels-container">
                 <div class="level-container">
-                    <a href="/sports">
-                        <img src="images/sports.jpeg" class="level-frame img-hover" />
-                    </a>
+                    <img src="images/sports.jpeg" class="level-frame item-hover" id="Sports" />
                     <label>Sports</label>
                 </div>
                 <div class="level-container">
-                    <a href="/movies">
-                        <img src="images/movies.jpeg" class="level-frame img-hover" />
-                    </a>
+                    <img src="images/movies.jpeg" class="level-frame item-hover" id="Movies" />
                     <label>Movies</label>
                 </div>
                 <div class="level-container">
-                    <a href="/games">
-                        <img src="images/video-games.jpeg" class="level-frame img-hover" />
-                    </a>
+                    <img src="images/video-games.jpeg" class="level-frame item-hover" id="Video Games" />
                     <label>Video Games</label>
                 </div>
                 <div class="level-container">
-                    <a href="/phrases">
-                        <img src="images/phrases.jpeg" class="level-frame img-hover" />
-                    </a>
+                    <img src="images/phrases.jpeg" class="level-frame item-hover" id="Fun Phrases" />
                     <label>Fun Phrases</label>
                 </div>
             </div>
@@ -57,19 +49,18 @@
     </main>
 
     <footer>
-        <!-- <p>&copy; 2024 Hangman</p> -->
         <ul>
             <li><a target="_blank" href="https://www.google.com">
-                <img src="icons/icons8-instagram.svg" class="img-hover" />
+                <img src="icons/icons8-instagram.svg" class="item-hover" />
             </a></li>
             <li><a target="_blank" href="https://www.google.com">
-                <img src="icons/icons8-facebook.svg" class="img-hover" />
+                <img src="icons/icons8-facebook.svg" class="item-hover" />
             </a></li>
             <li><a target="_blank" href="https://github.com/jawuanlewis">
-                <img src="icons/icons8-github.svg" class="img-hover" />
+                <img src="icons/icons8-github.svg" class="item-hover" />
             </a></li>
             <li><a target="_blank" href="https://www.linkedin.com/in/jawuan-lewis">
-                <img src="icons/icons8-linkedin.svg" class="img-hover" />
+                <img src="icons/icons8-linkedin.svg" class="item-hover" />
             </a></li>
         </ul>
     </footer>

@@ -1,35 +1,109 @@
+require('dotenv').config();
 const express = require('express');
-const app = express();
+const session = require('express-session');
 const path = require('path');
-//const db = require('./database');
+const app = express();
 
-// Middleware for parsing request bodies
+const { connectToDB, getRandomWord, closeConnection } = require('./scripts/database');
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Serve static files from the following directories
-app.use(express.static(path.join(__dirname, 'css')));
+// Configure session middleware
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Set true in production with HTTPS
+}));
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 app.use(express.static(path.join(__dirname, 'assets')));
+app.use(express.static(path.join(__dirname, 'css')));
+app.use(express.static(path.join(__dirname, 'scripts')));
 
 // Routing
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'home.html'));
+app.get('/', async (req, res) => {
+    await connectToDB();
+    res.render('homepage', { introMessage: 'Welcome! Choose a level to play below:' });
 });
-app.get('/sports', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'sports.html'));
+app.get('/game', (req, res) => {
+    res.render('gamepage', {
+        level: req.session.level,
+        attempts: req.session.attempts,
+        currentProgress: req.session.currentProgress,
+        statusMessage: req.session.statusMessage,
+        extraMessage: req.session.extraMessage,
+        gameOver: req.session.gameOver
+    });
 });
-app.get('/movies', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'movies.html'));
-});
-app.get('/games', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'games.html'));
-});
-app.get('/phrases', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'phrases.html'));
+app.get('/game/init', async (req, res) => {
+    const answer = await getRandomWord(req.query.level.toLowerCase());
+
+    req.session.level = req.query.level;
+    req.session.attempts = 6;
+    req.session.answer = answer;
+    req.session.currentProgress = answer.split('').map(char => (char === ' ' ? ' ' : '_')).join('');
+    req.session.gameOver = false;
+    req.session.statusMessage = `You have ${req.session.attempts} attempt(s) remaining.`;
+    req.session.extraMessage = "Guess a letter below:";
+
+    res.redirect('/game');
 });
 
-// Start the server
+// API endpoint for handling guesses
+app.post('/game/guess', (req, res) => {
+    const guess = req.body.letter;
+    const answer = req.session.answer;
+    let currentProgress = req.session.currentProgress;
+
+    let updatedProgress = '';
+    for (let i = 0; i < answer.length; i++) {
+        if (answer[i] === guess) {
+            updatedProgress += answer[i];
+        } else {
+            updatedProgress += currentProgress[i];
+        }
+    }
+
+    if (updatedProgress === currentProgress) {
+        req.session.attempts -= 1;
+    }
+    req.session.currentProgress = updatedProgress;
+
+    if (req.session.attempts <= 0) {
+        req.session.currentProgress = answer;
+        req.session.statusMessage = "Sorry! You have run out of guesses. The word is:";
+        req.session.extraMessage = "";
+        req.session.gameOver = true;
+    } else if (updatedProgress === answer) {
+        req.session.statusMessage = "Congratulations! You have correctly guessed the word.";
+        req.session.extraMessage = "";
+        req.session.gameOver = true;
+    } else {
+        req.session.statusMessage = `You have ${req.session.attempts} attempt(s) remaining.`;
+    }
+
+    res.json({
+        level: req.session.level,
+        attempts: req.session.attempts,
+        currentProgress: req.session.currentProgress,
+        statusMessage: req.session.statusMessage,
+        extraMessage: req.session.extraMessage,
+        gameOver: req.session.gameOver
+    });
+});
+
+// Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+// Close DB connection on app shutdown
+process.on('SIGINT', async () => {
+    await closeConnection();
+    process.exit(0);
 });

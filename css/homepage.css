@@ -1,17 +1,22 @@
-.home-header {
-    height: 15vh;
-    & h1 {
-        font-size: calc(0.5 * 12vh);
-        line-height: 1.2;
-    }
-}
+/* Page Sections */
 
 main {
     margin: 50px;
     padding-top: calc(15vh + 40px);
 }
 
-.levels-container {
+.homepage-header {
+    height: 15vh;
+    & h1 {
+        font-size: clamp(1.5rem, 6vw, 6vh);
+        line-height: 1.2;
+    }
+}
+
+
+/* Game Levels */
+
+#levels-container {
     max-width: fit-content;
     margin: auto;
 }
@@ -26,14 +31,15 @@ main {
     & label {
         display: block;
         margin: 30px 0;
-        font-size: calc(0.5 * 8vh);
+        font-size: clamp(1rem, 4vw, 4vh);
     }
 }
 
 .level-frame {
-    width: 280px;
-    height: 280px;
+    width: 250px;
+    height: 250px;
     border-radius: 20px;
+    cursor: pointer;
     &:hover {
         animation: backlight 0.2s linear forwards;
     }
