@@ -1,11 +1,9 @@
 # hangman-web-app
 
 This is source code for my own personal, web-based version of the game **_Hangman_**.
-There will be four available themes of words to guess (sports, movies, video games, and fun phrases/idioms).
+There are 4 available themes of words for players to guess (sports, movies, video games, and fun phrases/idioms), with more to come in the future.
 
-**_NOTE_**: The project is currently in progress
-
-## Run Project
+## Running The Project
 
 Prerequisites
 
