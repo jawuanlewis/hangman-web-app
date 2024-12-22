@@ -58,12 +58,17 @@ footer {
     background: #1C8CDB;
     position: fixed;
     display: flex;
+    align-items: center;
     width: 100%;
     bottom: 0;
     box-shadow: 0 -8px 30px gray;
+    & .icon-desc {
+        position: absolute;
+        right: 1em;
+    }
     & ul {
-        max-width: fit-content;
-        margin: auto;
+        margin: 0 auto;
+        padding: 0;
         list-style-type: none;
         display: flex;
         & li {

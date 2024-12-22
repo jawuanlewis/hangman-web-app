@@ -12,7 +12,7 @@ async function connectToDB() {
             isConnected = true;
             console.log('Connected to MongoDB');
         }
-        return client.db('hangman_app');
+        return client.db(process.env.DB_NAME);
     } catch (error) {
         console.error('Error connecting to MongoDB:', error);
         throw error;

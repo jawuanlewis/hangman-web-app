@@ -1,8 +1,19 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const session = require('express-session');
-const path = require('path');
+const MongoDBStore = require('connect-mongodb-session')(session);
+
+// Configure app and session storing in MongoDB
 const app = express();
+const store = new MongoDBStore({
+    uri: process.env.MONGO_URI,
+    databaseName: process.env.DB_NAME,
+    collection: 'sessions'
+});
+store.on('error', (error) => {
+    console.error('Session store error:', error);
+});
 
 const { connectToDB, getRandomWord, closeConnection } = require('./scripts/database');
 
@@ -12,9 +23,10 @@ app.use(express.json());
 // Configure session middleware
 app.use(session({
     secret: process.env.SESSION_SECRET,
+    store: store,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // Set true in production with HTTPS
+    cookie: { secure: process.env.NODE_ENV === 'production' }
 }));
 
 app.set('view engine', 'ejs');
