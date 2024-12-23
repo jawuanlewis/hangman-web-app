@@ -26,7 +26,7 @@ app.use(session({
     store: store,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: process.env.NODE_ENV === 'production' }
+    cookie: { secure: process.env.NODE_ENV === 'production' ? 'auto' : false }
 }));
 
 app.set('view engine', 'ejs');
@@ -42,6 +42,7 @@ app.get('/', async (req, res) => {
     res.render('homepage', { introMessage: 'Welcome! Choose a level to play below:' });
 });
 app.get('/game', (req, res) => {
+    console.log(req.session);
     res.render('gamepage', {
         level: req.session.level,
         attempts: req.session.attempts,
