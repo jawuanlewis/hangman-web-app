@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "Freeman";
-  src: url("fonts/Freeman/Freeman-Regular.ttf");
+  src: url("@/assets/fonts/Freeman/Freeman-Regular.ttf");
 }
 
 @keyframes backlight {
