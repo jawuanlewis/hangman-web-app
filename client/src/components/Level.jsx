@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Level = ({ image, title }) => {
   return (
     <div className="level-container">
-      <img src={image} className="level-frame item-hover" id={title} />
+      <Link to='/game'>
+        <img src={image} className="level-frame item-hover" id={title} />
+      </Link>
       <label>{title}</label>
     </div>
   );

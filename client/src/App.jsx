@@ -4,11 +4,18 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
 import HomePage from "./pages/HomePage";
+import GamePage from "./pages/GamePage";
 import "./styles/homepage.css";
 
 const router = createBrowserRouter(
-  createRoutesFromElements(<Route index element={<HomePage />} />)
+  createRoutesFromElements(
+    <Route path='/' element={<MainLayout />}>
+      <Route index element={<HomePage />} />
+      <Route path='/game' element={<GamePage />} />
+    </Route>
+  )
 );
 
 const App = () => {
