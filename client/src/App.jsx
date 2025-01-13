@@ -7,7 +7,6 @@ import {
 import MainLayout from "./layouts/MainLayout";
 import HomePage from "./pages/HomePage";
 import GamePage from "./pages/GamePage";
-import "./styles/homepage.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

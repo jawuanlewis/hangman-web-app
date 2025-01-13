@@ -7,7 +7,7 @@ const MainLayout = () => {
   return (
     <>
       <div className="header-and-nav">
-        <Header title="Hangman" type="homepage-header" />
+        <Header title="Hangman" />
         <NavBar />
       </div>
       <Outlet />

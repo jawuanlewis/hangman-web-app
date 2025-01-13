@@ -1,18 +1,3 @@
-/* Page Sections */
-
-main {
-  margin: 50px;
-  padding-top: calc(15vh + 40px);
-}
-
-.homepage-header {
-  height: 15vh;
-  & h1 {
-    font-size: clamp(1.5rem, 6vw, 6vh);
-    line-height: 1.2;
-  }
-}
-
 /* Game Levels */
 
 #levels-container {

@@ -1,17 +1,7 @@
 /* Page Sections */
 
-main {
+.game-layout {
   display: flex;
-  margin: 50px;
-  padding-top: calc(12vh + 40px);
-}
-
-.gamepage-header {
-  height: 12vh;
-  & h1 {
-    font-size: clamp(1rem, 4.8vw, 4.8vh);
-    line-height: 1.2;
-  }
 }
 
 .left-section {
