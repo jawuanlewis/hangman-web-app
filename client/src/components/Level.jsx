@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Level = ({ image, title }) => {
   return (
     <div className="level-container">
-      <Link to='/game'>
+      <Link to={`/game?level=${title}`}>
         <img src={image} className="level-frame item-hover" id={title} />
       </Link>
       <label>{title}</label>
