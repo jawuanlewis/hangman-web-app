@@ -18,9 +18,14 @@ const GamePage = () => {
   useEffect(() => {
     const initializeGame = async () => {
       try {
-        const level = searchParams.get('level') || 'Sports';
-        const gameData = await gameService.initGame(level);
-        setGameState(gameData);
+        const currentGame = await gameService.getCurrGame();
+        if (Object.keys(currentGame).length !== 0) {
+          setGameState(currentGame);
+        } else {
+          const level = searchParams.get('level') || 'Sports';
+          const gameData = await gameService.initGame(level);
+          setGameState(gameData);
+        }
         setLoading(false);
       } catch (err) {
         console.error('Failed to initialize game:', err);

@@ -19,10 +19,23 @@ const gameController = {
         level: req.session.level,
         attempts: req.session.attempts,
         currentProgress: req.session.currentProgress,
-        gameOver: false
+        gameOver: req.session.gameOver
       });
     } catch (error) {
       res.status(500).json({ error: "Failed to initialize game" });
+    }
+  },
+
+  getCurrentGame: async (req, res) => {
+    try {
+      res.json({
+        level: req.session.level,
+        attempts: req.session.attempts,
+        currentProgress: req.session.currentProgress,
+        gameOver: req.session.gameOver
+      });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to retrieve game session" });
     }
   },
 
@@ -41,27 +54,21 @@ const gameController = {
         }
       }
 
+      req.session.currentProgress = updatedProgress;
       if (updatedProgress === currentProgress) {
         req.session.attempts -= 1;
       }
-      req.session.currentProgress = updatedProgress;
+      if (req.session.attempts <= 0 || updatedProgress === answer) {
+        req.session.currentProgress = answer;
+        req.session.gameOver = true;
+      }
 
-      let gameState = {
+      res.json({
         level: req.session.level,
         attempts: req.session.attempts,
         currentProgress: req.session.currentProgress,
-        gameOver: false
-      };
-
-      if (req.session.attempts <= 0 || updatedProgress === answer) {
-        gameState = {
-          ...gameState,
-          currentProgress: answer,
-          gameOver: true
-        };
-      }
-
-      res.json(gameState);
+        gameOver: req.session.gameOver
+      });
     } catch (error) {
       res.status(500).json({ error: "Failed to process guess" });
     }

@@ -16,10 +16,30 @@ export const gameService = {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       
-      const data = await response.json();
-      return data;
+      return response.json();
     } catch (error) {
       console.error('Error in initGame:', error);
+      throw error;
+    }
+  },
+
+  getCurrGame: async () => {
+    try {
+      const response = await fetch(`${API_URL}/curr`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return response.json();
+    } catch (error) {
+      console.error('Error in getCurrGame:', error);
       throw error;
     }
   },
@@ -39,8 +59,7 @@ export const gameService = {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       
-      const data = await response.json();
-      return data;
+      return response.json();
     } catch (error) {
       console.error('Error in makeGuess:', error);
       throw error;
