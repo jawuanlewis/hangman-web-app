@@ -1,4 +1,4 @@
-import Levels from "@/components/Levels";
+import Levels from "@/components/home/Levels";
 import "@/styles/homepage.css";
 
 const HomePage = () => {
