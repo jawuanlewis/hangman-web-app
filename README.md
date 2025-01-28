@@ -1,8 +1,156 @@
 # hangman-web-app
 
+Open [this link](https://hangman-web-app-466f2d94c639.herokuapp.com/) to access and play the game!
+
+
+
+
+## Project Description
+
 This is source code for my own personal, web-based version of the game **_Hangman_**.
 There are 4 available themes of words for players to guess (sports, movies, video games, and fun phrases/idioms), with more to come in the future.
 
-NOTE: Currently migrating this project from EJS and vanilla JavaScript to React (enhancing efficiency and maintainability).
 
-Open [this link](https://hangman-web-app-466f2d94c639.herokuapp.com/) to access and play the game!
+
+
+## Design & Planning
+
+I used Figma to design and finalize the user interface, with some brief notes about backend control flow. Designs can be viewed [here](https://www.figma.com/design/tOop8Aqlh0zycbjdERI0Ut/Hangman?node-id=0-1&t=uR8s9pxzcX4Zwzt0-1).
+
+- **Step 1:** Define the app's color scheme, typography, and iconography.
+- **Step 2:** Begin designing global layout elements (Header, Nav Bar, Footer).
+- **Step 3:** Design each page of the app one-by-one (starting with home page).
+
+### Figma Best Practices
+
+- I created each meaningful component of the interface as its own group, to ensure the project layers were organized and hierarchical.
+- Made a separate page for each different display of the interface.
+- Wrote some supplementary notes about the app logic.
+
+
+
+
+## Technologies Used
+
+**Frontend:**
+- React.js
+- Vite (local development/testing)
+- HTML/CSS
+- ESLint
+
+**Backend**
+- Node.js
+- Express.js
+- MongoDB
+
+
+
+
+## Installation & Setup
+
+**NOTE:** In order to actually run this project locally, you would need access to the database (which is not provided here). I will still give setup instructions below.
+
+1. Clone the repository
+
+```
+git clone https://github.com/jawuanlewis/hangman-web-app.git
+```
+
+2. Install dependencies
+
+```
+cd hangman-web-app
+npm install
+```
+
+3. Set up environment variables
+
+Create a .env file in the root directory that contains the following variables:
+
+- **SESSION_SECRET:** can be any random, secret string
+- **MONGO_URI:** uri to the MongoDB database
+- **DB_NAME:** the database name
+
+4. Run the development server
+
+```
+npm run dev
+```
+
+
+
+
+## Project Structure
+
+```
+hangman-web-app/
+├── client/              # React frontend
+│   ├── src/
+│   │   ├── assets/        # Static assets
+│   │   ├── components/    # React components
+│   │   ├── layouts/       # Page layouts
+│   │   ├── pages/         # Page components
+│   │   ├── services/      # API calls to backend
+│   │   ├── styles/        # CSS files for styling
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js     # Vite configuration
+│
+├── server/              # Node/Express backend
+│   ├── config/            # Database configuration
+│   ├── controllers/       # APIs for game logic/routing
+│   ├── routes/            # Express app routes
+│   ├── app.js             # Express app setup
+│   └── package.json
+│
+├── .gitignore
+├── .prettierignore
+├── package.json         # Project-wide scripts
+└── README.md
+```
+
+
+
+
+## API Endpoints
+
+```
+POST /api/game/init      # Initialize game
+GET /api/game/curr       # Get current game state
+POST /api/game/guess     # Handle a user's guess
+```
+
+
+
+
+## Future Improvements
+
+**Resource Changes:**
+
+- Migrate from React to Redux for state management.
+- Migrate from Express Sessions to MongoDB (or some resource) for managing game data.
+
+**Future Features:**
+
+- Add a main game page, with no particular theme and an increasing level of difficulty with each word.
+- Generate small hints each time the user guesses incorrectly (potentially using AI).
+- Add a multiplayer page.
+- Add a "How to Play" page.
+- Add more words for the current levels.
+- Add more levels/themes.
+
+
+
+
+## Credits
+
+**[Social Media Icons](https://icons8.com)** 
+
+**Images:**
+
+- [Sports](https://wearecardinals.com/1068/showcase/is-your-sport-really-a-sport/)
+- [Movies](https://www.istockphoto.com/illustrations/movie-logo)
+- [Video Games](https://www.shutterstock.com/search/game-tech-zone?image_type=illustration)
+- [Fun Phrases](https://www.forbes.com/sites/shephyken/2021/10/03/choose-your-words-wisely-the-right-words-matter/?sh=7eb868e35f49&utm_source=zulars.com/)

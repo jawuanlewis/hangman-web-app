@@ -26,7 +26,7 @@ export const gameService = {
   getCurrGame: async () => {
     try {
       const response = await fetch(`${API_URL}/curr`, {
-        method: 'POST',
+        method: 'GET',
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json'

@@ -3,7 +3,7 @@ const router = express.Router();
 const gameController = require('../controllers/gameController');
 
 router.post('/init', gameController.initializeGame);
-router.post('/curr', gameController.getCurrentGame);
+router.get('/curr', gameController.getCurrentGame);
 router.post('/guess', gameController.makeGuess);
 
 module.exports = router;
