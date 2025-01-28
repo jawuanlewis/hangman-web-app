@@ -36,7 +36,8 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: { 
-      secure: process.env.NODE_ENV === "production" ? "auto" : false
+      secure: process.env.NODE_ENV === "production" ? "auto" : false,
+      maxAge: null
     },
   })
 );

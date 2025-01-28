@@ -7,12 +7,7 @@ import "@/styles/gamepage.css";
 
 const GamePage = () => {
   const [searchParams] = useSearchParams();
-  const [gameState, setGameState] = useState({
-    level: '',
-    attempts: 6,
-    currentProgress: '',
-    gameOver: false
-  });
+  const [gameState, setGameState] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -37,7 +32,13 @@ const GamePage = () => {
   }, [searchParams]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="game-layout">
+        <div className="loading-spinner">
+          Loading game...
+        </div>
+      </div>
+    );
   }
 
   return (

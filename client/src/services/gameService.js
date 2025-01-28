@@ -16,7 +16,7 @@ export const gameService = {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       
-      return response.json();
+      return await response.json();
     } catch (error) {
       console.error('Error in initGame:', error);
       throw error;
@@ -37,7 +37,7 @@ export const gameService = {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      return response.json();
+      return await response.json();
     } catch (error) {
       console.error('Error in getCurrGame:', error);
       throw error;
@@ -59,7 +59,7 @@ export const gameService = {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       
-      return response.json();
+      return await response.json();
     } catch (error) {
       console.error('Error in makeGuess:', error);
       throw error;

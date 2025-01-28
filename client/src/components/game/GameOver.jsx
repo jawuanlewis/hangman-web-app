@@ -1,10 +1,19 @@
 import { Link } from "react-router-dom";
+import { sessionService } from "@/services/sessionService";
 import PropTypes from 'prop-types';
 
 const GameOver = ({ level, replay }) => {
   const handleReplay = (e) => {
     e.preventDefault();
     replay(level);
+  };
+
+  const handleReset = async () => {
+    try {
+      await sessionService.resetSession();
+    } catch (error) {
+      console.error('Error resetting game session:', error);
+    }
   };
 
   return (
@@ -21,6 +30,7 @@ const GameOver = ({ level, replay }) => {
         to="/"
         className="item-hover"
         style={{backgroundColor: '#E74747'}}
+        onClick={handleReset}
       >
         Main Menu
       </Link>
