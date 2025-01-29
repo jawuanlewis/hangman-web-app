@@ -48,7 +48,7 @@ I used Figma to design and finalize the user interface, with some brief notes ab
 
 ## Installation & Setup
 
-**NOTE:** In order to actually run this project locally, you would need access to the database (which is not provided here). I will still give setup instructions below.
+**NOTE:** In order to actually run this project locally, you would need access to the database (which is not provided here). This is meant to be my own personal project, but I will still give setup instructions below.
 
 1. Clone the repository
 
@@ -120,6 +120,7 @@ hangman-web-app/
 POST /api/game/init      # Initialize game
 GET /api/game/curr       # Get current game state
 POST /api/game/guess     # Handle a user's guess
+POST /api/game/reset     # Reset the game session
 ```
 
 

@@ -45,7 +45,6 @@ const GamePage = () => {
     <main className="game-layout">
       <HangmanLayout 
         gameState={gameState} 
-        setGameState={setGameState} 
       />
       <GameLayout
         gameState={gameState} 

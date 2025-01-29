@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import Hangman from "@/components/game/Hangman";
 
-const HangmanLayout = ({ gameState, setGameState }) => {
+const HangmanLayout = ({ gameState }) => {
   return (
     <section className="left-section">
-      <Hangman />
+      <Hangman attempts={gameState.attempts} />
     </section>
   );
 };
