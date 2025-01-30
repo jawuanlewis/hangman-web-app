@@ -13,8 +13,8 @@ const Level = ({ image, title }) => {
 };
 
 Level.propTypes = {
-  image: PropTypes.string,
-  title: PropTypes.string
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default Level;

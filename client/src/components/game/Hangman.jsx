@@ -46,7 +46,7 @@ const Hangman = ({ attempts }) => {
 };
 
 Hangman.propTypes = {
-  attempts: PropTypes.number
+  attempts: PropTypes.number.isRequired
 };
 
 export default Hangman;

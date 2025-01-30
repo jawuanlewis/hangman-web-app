@@ -11,7 +11,7 @@ const CurrentProgress = ({ progress }) => {
 };
 
 CurrentProgress.propTypes = {
-  progress: PropTypes.string
+  progress: PropTypes.string.isRequired
 };
 
 export default CurrentProgress;

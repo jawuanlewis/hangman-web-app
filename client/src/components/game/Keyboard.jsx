@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getDisabledKeys, saveDisabledKey } from '@/util/keyboardState';
+import { getDisabledKeys, saveDisabledKey } from '@/utils/keyboardState';
 import PropTypes from 'prop-types';
 
 const Keyboard = ({ onGuess }) => {
@@ -13,7 +13,7 @@ const Keyboard = ({ onGuess }) => {
 
   const handleGuess = (letter) => {
     onGuess(letter);
-    
+
     setDisabledKeys(prev => {
       const newDisabled = new Set(prev).add(letter);
       saveDisabledKey(letter);

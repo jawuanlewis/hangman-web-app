@@ -33,8 +33,8 @@ const Messages = ({ attempts, gameOver}) => {
 };
 
 Messages.propTypes = {
-  attempts: PropTypes.number,
-  gameOver: PropTypes.bool
+  attempts: PropTypes.number.isRequired,
+  gameOver: PropTypes.bool.isRequired
 };
 
 export default Messages;

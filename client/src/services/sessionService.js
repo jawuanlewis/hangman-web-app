@@ -1,4 +1,4 @@
-import { resetKeyboardState } from "@/util/keyboardState";
+import { resetKeyboardState } from "@/utils/keyboardState";
 
 const API_URL = 'http://localhost:3000/api/game';
 

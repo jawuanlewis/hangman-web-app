@@ -39,8 +39,8 @@ const GameOver = ({ level, replay }) => {
 };
 
 GameOver.propTypes = {
-  level: PropTypes.string,
-  replay: PropTypes.func
+  level: PropTypes.string.isRequired,
+  replay: PropTypes.func.isRequired
 };
 
 export default GameOver;

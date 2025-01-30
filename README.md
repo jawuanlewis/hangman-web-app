@@ -92,6 +92,7 @@ hangman-web-app/
 │   │   ├── pages/         # Page components
 │   │   ├── services/      # API calls to backend
 │   │   ├── styles/        # CSS files for styling
+│   │   ├── utils/         # Helper functions
 │   │   ├── App.jsx
 │   │   └── main.jsx
 │   ├── index.html
