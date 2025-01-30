@@ -1,3 +1,5 @@
+import { resetKeyboardState } from "@/util/keyboardState";
+
 const API_URL = 'http://localhost:3000/api/game';
 
 export const sessionService = {
@@ -14,6 +16,7 @@ export const sessionService = {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+      resetKeyboardState();
 
       return await response.json();
     } catch (error) {

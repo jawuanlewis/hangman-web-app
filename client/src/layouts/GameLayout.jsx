@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import { gameService } from "@/services/gameService";
+import PropTypes from 'prop-types';
 import Messages from "@/components/game/Messages";
 import CurrentProgress from "@/components/game/CurrentProgress";
 import Keyboard from "@/components/game/Keyboard";

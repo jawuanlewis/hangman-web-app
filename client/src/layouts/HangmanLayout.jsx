@@ -15,8 +15,7 @@ HangmanLayout.propTypes = {
     attempts: PropTypes.number,
     currentProgress: PropTypes.string,
     gameOver: PropTypes.bool
-  }).isRequired,
-  setGameState: PropTypes.func.isRequired
+  }).isRequired
 };
 
 export default HangmanLayout;
