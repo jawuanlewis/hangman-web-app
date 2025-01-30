@@ -1,6 +1,6 @@
 import { resetKeyboardState } from "@/utils/keyboardState";
 
-const API_URL = 'http://localhost:3000/api/game';
+const API_URL = '/api/game';
 
 export const gameService = {
   initGame: async (level) => {

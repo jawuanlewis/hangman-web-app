@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
+const path = require("path");
 const gameRoutes = require("./routes/gameRoutes");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const { connectToDB, closeConnection } = require("./config/db");
@@ -20,9 +21,22 @@ store.on("error", (error) => {
   console.error("Session store error:", error);
 });
 
-// Middleware
+// CORS config based on environment
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://hangman-web-app-466f2d94c639.herokuapp.com'
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = '(CORS) Access from this origin not allowed.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
   credentials: true
 }));
 
@@ -36,7 +50,8 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: { 
-      secure: process.env.NODE_ENV === "production" ? "auto" : false,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax',
       maxAge: null
     },
   })
@@ -46,6 +61,15 @@ connectToDB();
 
 // API endpoints
 app.use("/api/game", gameRoutes);
+
+// Serve static files in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/dist")));
+  
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
+  });
+}
 
 // Start server
 const PORT = process.env.PORT || 3000;
