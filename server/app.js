@@ -24,7 +24,8 @@ store.on('error', (error) => {
 // CORS config based on environment
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://hangman-web-app-466f2d94c639.herokuapp.com',
+  process.env.PROD_URL,
+  process.env.STAGING_URL,
 ];
 
 app.use(
