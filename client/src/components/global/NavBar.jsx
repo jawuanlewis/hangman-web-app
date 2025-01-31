@@ -11,14 +11,15 @@ const NavBar = () => {
   };
 
   return (
-    <nav><ul>
-      <li><Link 
-        to="/"
-        onClick={handleReset}
-      >
-        Home
-      </Link></li>
-    </ul></nav>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/" onClick={handleReset}>
+            Home
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

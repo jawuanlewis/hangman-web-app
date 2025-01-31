@@ -1,4 +1,4 @@
-import { resetKeyboardState } from "@/utils/keyboardState";
+import { resetKeyboardState } from '@/utils/keyboardState';
 
 const API_URL = '/api/game';
 
@@ -9,11 +9,11 @@ export const gameService = {
         method: 'POST',
         credentials: 'include',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ level })
+        body: JSON.stringify({ level }),
       });
-      
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -32,8 +32,8 @@ export const gameService = {
         method: 'GET',
         credentials: 'include',
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       });
 
       if (!response.ok) {
@@ -53,19 +53,19 @@ export const gameService = {
         method: 'POST',
         credentials: 'include',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ letter })
+        body: JSON.stringify({ letter }),
       });
-      
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
+
       return await response.json();
     } catch (error) {
       console.error('Error in makeGuess:', error);
       throw error;
     }
-  }
+  },
 };

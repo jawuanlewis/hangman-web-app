@@ -2,16 +2,10 @@
 
 Open [this link](https://hangman-web-app-466f2d94c639.herokuapp.com/) to access and play the game!
 
-
-
-
 ## Project Description
 
 This is source code for my own personal, web-based version of the game **_Hangman_**.
 There are 4 available themes of words for players to guess (sports, movies, video games, and fun phrases/idioms), with more to come in the future.
-
-
-
 
 ## Design & Planning
 
@@ -27,24 +21,20 @@ I used Figma to design and finalize the user interface, with some brief notes ab
 - Made a separate page for each different display of the interface.
 - Wrote some supplementary notes about the app logic.
 
-
-
-
 ## Technologies Used
 
 **Frontend:**
+
 - React.js
 - Vite (local development/testing)
 - HTML/CSS
 - ESLint
 
 **Backend**
+
 - Node.js
 - Express.js
 - MongoDB
-
-
-
 
 ## Installation & Setup
 
@@ -76,9 +66,6 @@ Create a .env file in the root directory that contains the following variables:
 ```
 npm run dev
 ```
-
-
-
 
 ## Project Structure
 
@@ -112,9 +99,6 @@ hangman-web-app/
 └── README.md
 ```
 
-
-
-
 ## API Endpoints
 
 ```
@@ -123,9 +107,6 @@ GET /api/game/curr       # Get current game state
 POST /api/game/guess     # Handle a user's guess
 POST /api/game/reset     # Reset the game session
 ```
-
-
-
 
 ## Future Improvements
 
@@ -143,12 +124,9 @@ POST /api/game/reset     # Reset the game session
 - Add more words for the current levels.
 - Add more levels/themes.
 
-
-
-
 ## Credits
 
-**[Social Media Icons](https://icons8.com)** 
+**[Social Media Icons](https://icons8.com)**
 
 **Images:**
 

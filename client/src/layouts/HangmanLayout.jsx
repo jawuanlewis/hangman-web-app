@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Hangman from "@/components/game/Hangman";
+import Hangman from '@/components/game/Hangman';
 
 const HangmanLayout = ({ gameState }) => {
   return (
@@ -14,8 +14,8 @@ HangmanLayout.propTypes = {
     level: PropTypes.string,
     attempts: PropTypes.number,
     currentProgress: PropTypes.string,
-    gameOver: PropTypes.bool
-  }).isRequired
+    gameOver: PropTypes.bool,
+  }).isRequired,
 };
 
 export default HangmanLayout;

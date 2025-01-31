@@ -1,4 +1,4 @@
-import { resetKeyboardState } from "@/utils/keyboardState";
+import { resetKeyboardState } from '@/utils/keyboardState';
 
 const API_URL = '/api/game';
 
@@ -9,8 +9,8 @@ export const sessionService = {
         method: 'POST',
         credentials: 'include',
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       });
 
       if (!response.ok) {
@@ -23,5 +23,5 @@ export const sessionService = {
       console.error('Error in resetSession:', error);
       throw error;
     }
-  }
+  },
 };

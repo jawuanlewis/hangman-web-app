@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { gameService } from "@/services/gameService";
-import HangmanLayout from "@/layouts/HangmanLayout";
-import GameLayout from "@/layouts/GameLayout";
-import "@/styles/gamepage.css";
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { gameService } from '@/services/gameService';
+import HangmanLayout from '@/layouts/HangmanLayout';
+import GameLayout from '@/layouts/GameLayout';
+import '@/styles/gamepage.css';
 
 const GamePage = () => {
   const [searchParams] = useSearchParams();
@@ -34,22 +34,15 @@ const GamePage = () => {
   if (loading) {
     return (
       <div className="game-layout">
-        <div className="loading-spinner">
-          Loading game...
-        </div>
+        <div className="loading-spinner">Loading game...</div>
       </div>
     );
   }
 
   return (
     <main className="game-layout">
-      <HangmanLayout 
-        gameState={gameState} 
-      />
-      <GameLayout
-        gameState={gameState} 
-        setGameState={setGameState} 
-      />
+      <HangmanLayout gameState={gameState} />
+      <GameLayout gameState={gameState} setGameState={setGameState} />
     </main>
   );
 };

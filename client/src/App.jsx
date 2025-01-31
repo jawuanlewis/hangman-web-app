@@ -3,16 +3,16 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
-} from "react-router-dom";
-import MainLayout from "./layouts/MainLayout";
-import HomePage from "./pages/HomePage";
-import GamePage from "./pages/GamePage";
+} from 'react-router-dom';
+import MainLayout from './layouts/MainLayout';
+import HomePage from './pages/HomePage';
+import GamePage from './pages/GamePage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<MainLayout />}>
+    <Route path="/" element={<MainLayout />}>
       <Route index element={<HomePage />} />
-      <Route path='game' element={<GamePage />} />
+      <Route path="game" element={<GamePage />} />
     </Route>
   )
 );

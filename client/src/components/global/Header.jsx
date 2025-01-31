@@ -9,7 +9,7 @@ const Header = ({ title }) => {
 };
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 export default Header;

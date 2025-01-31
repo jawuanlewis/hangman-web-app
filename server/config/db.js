@@ -1,5 +1,5 @@
-require("dotenv").config();
-const { MongoClient } = require("mongodb");
+require('dotenv').config();
+const { MongoClient } = require('mongodb');
 
 const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri);
@@ -10,18 +10,18 @@ async function connectToDB() {
     if (!isConnected) {
       await client.connect();
       isConnected = true;
-      console.log("Connected to MongoDB");
+      console.log('Connected to MongoDB');
     }
     return client.db(process.env.DB_NAME);
   } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
+    console.error('Error connecting to MongoDB:', error);
     throw error;
   }
 }
 
 async function getRandomWord(category) {
   const db = await connectToDB();
-  const collection = db.collection("words");
+  const collection = db.collection('words');
 
   const randomWord = await collection
     .aggregate([
@@ -36,7 +36,7 @@ async function getRandomWord(category) {
 
 async function closeConnection() {
   if (isConnected) {
-    console.log("Closing MongoDB connection");
+    console.log('Closing MongoDB connection');
     await client.close();
   }
 }

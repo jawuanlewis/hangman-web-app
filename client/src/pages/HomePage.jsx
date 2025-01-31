@@ -1,5 +1,5 @@
-import Levels from "@/components/home/Levels";
-import "@/styles/homepage.css";
+import Levels from '@/components/home/Levels';
+import '@/styles/homepage.css';
 
 const HomePage = () => {
   return (
@@ -8,7 +8,8 @@ const HomePage = () => {
         <div className="head-text">
           <label>Welcome! Choose a level to play below:</label>
         </div>
-        <br></br><br></br>
+        <br></br>
+        <br></br>
         <Levels />
       </section>
     </main>

@@ -3,10 +3,10 @@ const sessionController = {
     try {
       req.session.destroy((err) => {
         if (err) {
-          return res.status(500).json({ 
-            success: false, 
+          return res.status(500).json({
+            success: false,
             message: 'Failed to reset game session',
-            error: err.message 
+            error: err.message,
           });
         }
         res.status(200).json({});
@@ -15,10 +15,10 @@ const sessionController = {
       res.status(500).json({
         success: false,
         message: 'Server error while resetting game session',
-        error: error.message
+        error: error.message,
       });
     }
-  }
+  },
 };
 
 module.exports = sessionController;

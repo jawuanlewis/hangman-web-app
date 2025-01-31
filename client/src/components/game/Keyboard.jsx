@@ -3,7 +3,7 @@ import { getDisabledKeys, saveDisabledKey } from '@/utils/keyboardState';
 import PropTypes from 'prop-types';
 
 const Keyboard = ({ onGuess }) => {
-  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   const [disabledKeys, setDisabledKeys] = useState(new Set());
 
   useEffect(() => {
@@ -14,13 +14,13 @@ const Keyboard = ({ onGuess }) => {
   const handleGuess = (letter) => {
     onGuess(letter);
 
-    setDisabledKeys(prev => {
+    setDisabledKeys((prev) => {
       const newDisabled = new Set(prev).add(letter);
       saveDisabledKey(letter);
       return newDisabled;
     });
   };
-  
+
   return (
     <div id="keyboard-container">
       {letters.map((letter) => (
@@ -38,7 +38,7 @@ const Keyboard = ({ onGuess }) => {
 };
 
 Keyboard.propTypes = {
-  onGuess: PropTypes.func.isRequired
+  onGuess: PropTypes.func.isRequired,
 };
 
 export default Keyboard;
