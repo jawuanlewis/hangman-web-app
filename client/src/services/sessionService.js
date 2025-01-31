@@ -1,11 +1,9 @@
 import { resetKeyboardState } from '@/utils/keyboardState';
 
-const API_URL = '/api/game';
-
 export const sessionService = {
   resetSession: async () => {
     try {
-      const response = await fetch(`${API_URL}/reset`, {
+      const response = await fetch('/api/game/reset', {
         method: 'POST',
         credentials: 'include',
         headers: {
