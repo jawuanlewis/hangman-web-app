@@ -17,6 +17,7 @@ const Hangman = ({ attempts }) => {
         viewBox="0 0 400 400"
         preserveAspectRatio="xMidYMid meet"
       >
+        {/* Base */}
         <line
           x1="50"
           y1="350"
@@ -24,8 +25,8 @@ const Hangman = ({ attempts }) => {
           y2="350"
           stroke="#B87844"
           strokeWidth="10"
-        />{' '}
-        {/* Base */}
+        />
+        {/* Pole */}
         <line
           x1="70"
           y1="350"
@@ -33,8 +34,8 @@ const Hangman = ({ attempts }) => {
           y2="50"
           stroke="#B87844"
           strokeWidth="10"
-        />{' '}
-        {/* Pole */}
+        />
+        {/* Top Beam */}
         <line
           x1="50"
           y1="50"
@@ -42,8 +43,8 @@ const Hangman = ({ attempts }) => {
           y2="50"
           stroke="#B87844"
           strokeWidth="10"
-        />{' '}
-        {/* Top Beam */}
+        />
+        {/* Support Beam */}
         <line
           x1="70"
           y1="100"
@@ -51,8 +52,8 @@ const Hangman = ({ attempts }) => {
           y2="50"
           stroke="#B87844"
           strokeWidth="8"
-        />{' '}
-        {/* Support Beam */}
+        />
+        {/* Rope */}
         <line
           x1="200"
           y1="50"
@@ -60,8 +61,8 @@ const Hangman = ({ attempts }) => {
           y2="100"
           stroke="#B87844"
           strokeWidth="6"
-        />{' '}
-        {/* Rope */}
+        />
+
         {/* Stick Figure Parts */}
         <circle
           id="head"
