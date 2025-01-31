@@ -23,7 +23,7 @@ store.on('error', (error) => {
 
 // CORS config based on environment
 const allowedOrigins = [
-  'http://localhost:5173/',
+  'http://localhost:5173',
   process.env.PROD_URL,
   process.env.STAGING_URL,
 ];
