@@ -51,10 +51,10 @@ app.use(
     secret: process.env.SESSION_SECRET,
     store: store,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      secure: process.env.NODE_ENV !== 'development',
+      sameSite: process.env.NODE_ENV === 'development' ? 'lax' : 'none',
       maxAge: null,
     },
   })
