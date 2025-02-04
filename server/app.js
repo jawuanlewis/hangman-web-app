@@ -60,6 +60,11 @@ app.use(
   })
 );
 
+app.use((req, res, next) => {
+  console.log("Session Middleware Debug:", req.session);
+  next();
+});
+
 connectToDB();
 
 // API endpoints
