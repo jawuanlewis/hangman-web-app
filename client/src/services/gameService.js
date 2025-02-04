@@ -47,6 +47,7 @@ export const gameService = {
 
   makeGuess: async (letter) => {
     try {
+      console.log("Testing console");
       const response = await fetch('/api/game/guess', {
         method: 'POST',
         credentials: 'include',

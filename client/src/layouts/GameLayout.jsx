@@ -8,6 +8,7 @@ import GameOver from '@/components/game/GameOver';
 const GameLayout = ({ gameState, setGameState }) => {
   const handleGuess = async (letter) => {
     try {
+      console.log("Testing console");
       const gameData = await gameService.makeGuess(letter);
       setGameState(gameData);
     } catch (error) {
