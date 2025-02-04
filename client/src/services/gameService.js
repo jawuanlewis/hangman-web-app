@@ -1,9 +1,11 @@
 import { resetKeyboardState } from '@/utils/keyboardState';
 
+const API_URL = 'https://hangman-testing-38f61c8ec34a.herokuapp.com/api/game';
+
 export const gameService = {
   initGame: async (level) => {
     try {
-      const response = await fetch('/api/game/init', {
+      const response = await fetch(`${API_URL}/init`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -26,7 +28,7 @@ export const gameService = {
 
   getCurrGame: async () => {
     try {
-      const response = await fetch('/api/game/curr', {
+      const response = await fetch(`${API_URL}/curr`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -47,8 +49,7 @@ export const gameService = {
 
   makeGuess: async (letter) => {
     try {
-      console.log("Testing console");
-      const response = await fetch('/api/game/guess', {
+      const response = await fetch(`${API_URL}/guess`, {
         method: 'POST',
         credentials: 'include',
         headers: {
