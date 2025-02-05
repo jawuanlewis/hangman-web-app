@@ -3,6 +3,11 @@ const { getRandomWord } = require('../config/db');
 const gameController = {
   initializeGame: async (req, res) => {
     try {
+      console.log('Pre-init session state:', {
+        sessionId: req.session.id,
+        sessionContent: req.session
+      });
+
       const { level } = req.body;
       const answer = await getRandomWord(level.toLowerCase());
 
@@ -14,6 +19,18 @@ const gameController = {
         .map((char) => (char === ' ' ? ' ' : '_'))
         .join('');
       req.session.gameOver = false;
+
+      await new Promise((resolve, reject) => {
+        req.session.save(err => {
+          if (err) reject(err);
+          else resolve();
+        });
+      });
+
+      console.log('Post-init session state:', {
+        sessionId: req.session.id,
+        sessionContent: req.session
+      });
 
       res.json({
         level: req.session.level,
@@ -41,18 +58,6 @@ const gameController = {
 
   makeGuess: async (req, res) => {
     try {
-      console.log('Session state at start of makeGuess:', {
-        sessionId: req.session.id,
-        hasSession: !!req.session,
-        sessionContent: {
-          level: req.session.level,
-          attempts: req.session.attempts,
-          answer: req.session.answer,
-          currentProgress: req.session.currentProgress,
-          gameOver: req.session.gameOver
-        }
-      });
-
       const { letter } = req.body;
       const answer = req.session.answer;
       let currentProgress = req.session.currentProgress;

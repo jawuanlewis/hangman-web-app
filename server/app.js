@@ -15,6 +15,10 @@ const store = new MongoDBStore({
   uri: process.env.MONGO_URI,
   databaseName: process.env.DB_NAME,
   collection: 'sessions',
+  connectionOptions: {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  },
 });
 
 store.on('error', (error) => {
@@ -50,7 +54,7 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     store: store,
-    resave: false,
+    resave: true,
     saveUninitialized: false,
     cookie: {
       secure: process.env.NODE_ENV !== 'development',
