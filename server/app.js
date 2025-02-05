@@ -50,7 +50,7 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     store: store,
-    resave: true,
+    resave: false,
     saveUninitialized: false,
     cookie: {
       maxAge: null,
