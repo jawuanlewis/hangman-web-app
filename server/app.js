@@ -15,10 +15,6 @@ const store = new MongoDBStore({
   uri: process.env.MONGO_URI,
   databaseName: process.env.DB_NAME,
   collection: 'sessions',
-  connectionOptions: {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  },
 });
 
 store.on('error', (error) => {
@@ -57,12 +53,7 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_ENV !== 'development',
-      sameSite: process.env.NODE_ENV === 'development' ? 'lax' : 'none',
-      maxAge: 24 * 60 * 60 * 1000,
-      domain: process.env.NODE_ENV === 'development'
-        ? 'localhost'
-        : '.herokuapp.com'
+      maxAge: null,
     },
   })
 );
