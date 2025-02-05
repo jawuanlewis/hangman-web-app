@@ -1,11 +1,9 @@
 import { resetKeyboardState } from '@/utils/keyboardState';
 
-const API_URL = 'https://hangman-testing-38f61c8ec34a.herokuapp.com/api/game';
-
 export const gameService = {
   initGame: async (level) => {
     try {
-      const response = await fetch(`${API_URL}/init`, {
+      const response = await fetch('/api/game/init', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -28,7 +26,7 @@ export const gameService = {
 
   getCurrGame: async () => {
     try {
-      const response = await fetch(`${API_URL}/curr`, {
+      const response = await fetch('/api/game/curr', {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -49,7 +47,7 @@ export const gameService = {
 
   makeGuess: async (letter) => {
     try {
-      const response = await fetch(`${API_URL}/guess`, {
+      const response = await fetch('/api/game/guess', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -59,6 +57,12 @@ export const gameService = {
       });
 
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Guess response error:', {
+          status: response.status,
+          statusText: response.statusText,
+          body: errorText
+        });
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 

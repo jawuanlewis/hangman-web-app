@@ -41,6 +41,18 @@ const gameController = {
 
   makeGuess: async (req, res) => {
     try {
+      console.log('Session state at start of makeGuess:', {
+        sessionId: req.session.id,
+        hasSession: !!req.session,
+        sessionContent: {
+          level: req.session.level,
+          attempts: req.session.attempts,
+          answer: req.session.answer,
+          currentProgress: req.session.currentProgress,
+          gameOver: req.session.gameOver
+        }
+      });
+
       const { letter } = req.body;
       const answer = req.session.answer;
       let currentProgress = req.session.currentProgress;
