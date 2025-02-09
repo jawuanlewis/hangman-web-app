@@ -5,7 +5,7 @@ const gameController = {
     try {
       console.log('Pre-init session state:', {
         sessionId: req.session.id,
-        sessionContent: req.session
+        sessionContent: req.session,
       });
 
       const { level } = req.body;
@@ -20,16 +20,16 @@ const gameController = {
         .join('');
       req.session.gameOver = false;
 
-      await new Promise((resolve, reject) => {
-        req.session.save(err => {
-          if (err) reject(err);
-          else resolve();
-        });
-      });
+      // await new Promise((resolve, reject) => {
+      //   req.session.save((err) => {
+      //     if (err) reject(err);
+      //     else resolve();
+      //   });
+      // });
 
       console.log('Post-init session state:', {
         sessionId: req.session.id,
-        sessionContent: req.session
+        sessionContent: req.session,
       });
 
       res.json({

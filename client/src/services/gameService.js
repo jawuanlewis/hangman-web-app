@@ -13,6 +13,12 @@ export const gameService = {
       });
 
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Initialize game response error:', {
+          status: response.status,
+          statusText: response.statusText,
+          body: errorText,
+        });
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       resetKeyboardState();
@@ -35,6 +41,12 @@ export const gameService = {
       });
 
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Current game response error:', {
+          status: response.status,
+          statusText: response.statusText,
+          body: errorText,
+        });
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
@@ -61,7 +73,7 @@ export const gameService = {
         console.error('Guess response error:', {
           status: response.status,
           statusText: response.statusText,
-          body: errorText
+          body: errorText,
         });
         throw new Error(`HTTP error! status: ${response.status}`);
       }

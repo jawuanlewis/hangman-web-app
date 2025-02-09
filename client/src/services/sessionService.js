@@ -12,6 +12,12 @@ export const sessionService = {
       });
 
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Reset session response error:', {
+          status: response.status,
+          statusText: response.statusText,
+          body: errorText,
+        });
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       resetKeyboardState();
