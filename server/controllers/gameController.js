@@ -20,13 +20,6 @@ const gameController = {
         .join('');
       req.session.gameOver = false;
 
-      // await new Promise((resolve, reject) => {
-      //   req.session.save((err) => {
-      //     if (err) reject(err);
-      //     else resolve();
-      //   });
-      // });
-
       console.log('Post-init session state:', {
         sessionId: req.session.id,
         sessionContent: req.session,

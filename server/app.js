@@ -67,14 +67,6 @@ app.use('/api/game', gameRoutes);
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/dist')));
 
-  app.use(
-    '/assets',
-    express.static(path.join(__dirname, '../client/dist/assets'), {
-      maxAge: '30d',
-      immutable: true,
-    })
-  );
-
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
   });
