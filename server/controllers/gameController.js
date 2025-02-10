@@ -3,11 +3,6 @@ const { getRandomWord } = require('../config/db');
 const gameController = {
   initializeGame: async (req, res) => {
     try {
-      console.log('Pre-init session state:', {
-        sessionId: req.session.id,
-        sessionContent: req.session,
-      });
-
       const { level } = req.body;
       const answer = await getRandomWord(level.toLowerCase());
 
@@ -19,11 +14,6 @@ const gameController = {
         .map((char) => (char === ' ' ? ' ' : '_'))
         .join('');
       req.session.gameOver = false;
-
-      console.log('Post-init session state:', {
-        sessionId: req.session.id,
-        sessionContent: req.session,
-      });
 
       res.json({
         level: req.session.level,

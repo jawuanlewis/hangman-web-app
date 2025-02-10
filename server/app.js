@@ -58,7 +58,6 @@ app.use(
     cookie: {
       secure: process.env.NODE_ENV !== 'development',
       sameSite: process.env.NODE_ENV === 'development' ? 'lax' : 'none',
-      httpOnly: true,
       maxAge: null,
     },
     proxy: true,
