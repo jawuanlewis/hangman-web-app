@@ -10,6 +10,8 @@ require('dotenv').config();
 
 const app = express();
 
+app.set('trust proxy', 1);
+
 // Configure MongoDB session store
 const store = new MongoDBStore({
   uri: process.env.MONGO_URI,
@@ -40,6 +42,7 @@ app.use(
       return callback(null, true);
     },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   })
 );
 
@@ -54,8 +57,11 @@ app.use(
     saveUninitialized: false,
     cookie: {
       secure: process.env.NODE_ENV !== 'development',
+      sameSite: process.env.NODE_ENV === 'development' ? 'lax' : 'none',
+      httpOnly: true,
       maxAge: null,
     },
+    proxy: true,
   })
 );
 
