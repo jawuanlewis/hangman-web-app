@@ -21,4 +21,4 @@ const sessionController = {
   },
 };
 
-module.exports = sessionController;
+export default sessionController;

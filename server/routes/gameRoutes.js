@@ -1,11 +1,12 @@
-const express = require('express');
+import express from 'express';
+import gameController from '../controllers/gameController.js';
+import sessionController from '../controllers/sessionController.js';
+
 const router = express.Router();
-const gameController = require('../controllers/gameController');
-const sessionController = require('../controllers/sessionController');
 
 router.post('/init', gameController.initializeGame);
 router.get('/curr', gameController.getCurrentGame);
 router.post('/guess', gameController.makeGuess);
 router.post('/reset', sessionController.resetSession);
 
-module.exports = router;
+export default router;

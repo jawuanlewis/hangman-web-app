@@ -1,4 +1,4 @@
-const { getRandomWord } = require('../config/db');
+import { getRandomWord } from '../config/db.js';
 
 const gameController = {
   initializeGame: async (req, res) => {
@@ -75,4 +75,4 @@ const gameController = {
   },
 };
 
-module.exports = gameController;
+export default gameController;

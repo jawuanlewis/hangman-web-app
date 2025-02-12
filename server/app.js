@@ -1,19 +1,22 @@
-const express = require('express');
-const cors = require('cors');
-const session = require('express-session');
-const path = require('path');
-const gameRoutes = require('./routes/gameRoutes');
-const MongoDBStore = require('connect-mongodb-session')(session);
-const { connectToDB, closeConnection } = require('./config/db');
+import express from 'express';
+import cors from 'cors';
+import session from 'express-session';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import MongoDBStore from 'connect-mongodb-session';
+import { connectToDB, closeConnection } from './config/db.js';
+import gameRoutes from './routes/gameRoutes.js';
+import 'dotenv/config';
 
-require('dotenv').config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
 app.set('trust proxy', 1);
 
 // Configure MongoDB session store
-const store = new MongoDBStore({
+const store = new MongoDBStore(session)({
   uri: process.env.MONGO_URI,
   databaseName: process.env.DB_NAME,
   collection: 'sessions',

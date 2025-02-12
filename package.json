@@ -1,6 +1,7 @@
 {
   "name": "hangman-web-app",
   "version": "1.0.0",
+  "type": "module",
   "main": "server/app.js",
   "scripts": {
     "start": "node server/app.js",

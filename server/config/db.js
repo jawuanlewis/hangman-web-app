@@ -1,5 +1,5 @@
-require('dotenv').config();
-const { MongoClient } = require('mongodb');
+import 'dotenv/config';
+import { MongoClient } from 'mongodb';
 
 const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri);
@@ -41,4 +41,4 @@ async function closeConnection() {
   }
 }
 
-module.exports = { connectToDB, getRandomWord, closeConnection };
+export { connectToDB, getRandomWord, closeConnection };
