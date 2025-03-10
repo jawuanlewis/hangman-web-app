@@ -17,7 +17,7 @@ const GamePage = () => {
         if (Object.keys(currentGame).length !== 0) {
           setGameState(currentGame);
         } else {
-          const level = searchParams.get('level') || 'Sports';
+          const level = searchParams.get('level') || 'Movies';
           const gameData = await gameService.initGame(level);
           setGameState(gameData);
         }

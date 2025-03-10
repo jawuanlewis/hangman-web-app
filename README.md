@@ -5,7 +5,7 @@ Open [this link](https://hangman-web-app-466f2d94c639.herokuapp.com/) to access 
 ## Project Description
 
 This is source code for my own personal, web-based version of the game **_Hangman_**.
-There are 4 available themes of words for players to guess (sports, movies, video games, and fun phrases/idioms), with more to come in the future.
+There are 4 available themes of words for players to guess (movies, video games, sports, and idioms), with more to come in the future.
 
 ## Design & Planning
 
@@ -130,7 +130,7 @@ POST /api/game/reset     # Reset the game session
 
 **Images:**
 
-- [Sports](https://wearecardinals.com/1068/showcase/is-your-sport-really-a-sport/)
 - [Movies](https://www.istockphoto.com/illustrations/movie-logo)
 - [Video Games](https://www.shutterstock.com/search/game-tech-zone?image_type=illustration)
-- [Fun Phrases](https://www.forbes.com/sites/shephyken/2021/10/03/choose-your-words-wisely-the-right-words-matter/?sh=7eb868e35f49&utm_source=zulars.com/)
+- [Sports](https://wearecardinals.com/1068/showcase/is-your-sport-really-a-sport/)
+- [Idioms](https://www.forbes.com/sites/shephyken/2021/10/03/choose-your-words-wisely-the-right-words-matter/?sh=7eb868e35f49&utm_source=zulars.com/)
