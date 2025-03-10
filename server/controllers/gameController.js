@@ -5,13 +5,14 @@ const gameController = {
     try {
       const { level } = req.body;
       const answer = await getRandomWord(level.toLowerCase());
+      const preserveChars = [' ', '-', ':', ',', '.', '\''];
 
       req.session.level = level;
       req.session.attempts = 6;
       req.session.answer = answer;
       req.session.currentProgress = answer
         .split('')
-        .map((char) => (char === ' ' ? ' ' : '_'))
+        .map((char) => (preserveChars.includes(char) ? char : '_'))
         .join('');
       req.session.gameOver = false;
 
