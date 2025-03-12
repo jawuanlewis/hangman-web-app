@@ -5,7 +5,9 @@ Open [this link](https://hangman-web-app-466f2d94c639.herokuapp.com/) to access 
 ## Project Description
 
 This is source code for my own personal, web-based version of the game **_Hangman_**.
-There are 4 available themes of words for players to guess (movies, video games, sports, and idioms), with more to come in the future.
+There are currently 8 available themes of words for players to guess: 
+
+- movies, video games, sports, idioms, TV shows, food, animals, and cities
 
 ## Design & Planning
 
@@ -134,3 +136,7 @@ POST /api/game/reset     # Reset the game session
 - [Video Games](https://www.shutterstock.com/search/game-tech-zone?image_type=illustration)
 - [Sports](https://wearecardinals.com/1068/showcase/is-your-sport-really-a-sport/)
 - [Idioms](https://www.forbes.com/sites/shephyken/2021/10/03/choose-your-words-wisely-the-right-words-matter/?sh=7eb868e35f49&utm_source=zulars.com/)
+- [TV Shows](https://www.vecteezy.com/vector-art/2152246-tv-with-antenna-old-television-set-icon-vector)
+- [Food](https://www.vectorstock.com/royalty-free-vector/plate-with-food-healthy-eating-vector-45826679)
+- [Animals](https://www.etsy.com/listing/1060768167/farm-animals-slipart-vector-farm-animals)
+- [Cities](https://blog.icons8.com/articles/graphic-design-digital-illustrations-city/)
