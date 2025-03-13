@@ -22,8 +22,8 @@
 }
 
 .level-frame {
-  width: 250px;
-  height: 250px;
+  width: 280px;
+  height: 280px;
   border-radius: 20px;
   cursor: pointer;
   &:hover {

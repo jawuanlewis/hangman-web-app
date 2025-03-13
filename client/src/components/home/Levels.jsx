@@ -1,12 +1,12 @@
 import Level from './Level';
-import movies from '@/assets/images/movies.jpeg';
-import videoGames from '@/assets/images/video-games.jpeg';
-import sports from '@/assets/images/sports.jpeg';
-import idioms from '@/assets/images/idioms.jpeg';
-import tvShows from '@/assets/images/tv-shows.jpeg';
-import food from '@/assets/images/food.jpeg';
-import animals from '@/assets/images/animals.jpeg';
-import cities from '@/assets/images/cities.jpeg';
+import movies from '@/assets/images/movies.png';
+import videoGames from '@/assets/images/video-games.png';
+import sports from '@/assets/images/sports.png';
+import idioms from '@/assets/images/idioms.png';
+import tvShows from '@/assets/images/tv-shows.png';
+import food from '@/assets/images/food.png';
+import animals from '@/assets/images/animals.png';
+import cities from '@/assets/images/cities.png';
 
 const Levels = () => {
   return (
