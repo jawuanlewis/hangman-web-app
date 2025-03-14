@@ -5,7 +5,7 @@ Open [this link](https://hangman-web-app-466f2d94c639.herokuapp.com/) to access 
 ## Project Description
 
 This is source code for my own personal, web-based version of the game **_Hangman_**.
-There are 8 available themes of words for players to guess: 
+There are 8 available themes of words for players to guess:
 
 - movies, video games, sports, idioms, TV shows, food, animals, and cities
 
