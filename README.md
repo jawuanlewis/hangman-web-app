@@ -1,6 +1,6 @@
 # hangman-web-app
 
-Open [this link](https://hangman-web-app-466f2d94c639.herokuapp.com/){:target="_blank"} to access and play the game!
+Open [this link](https://hangman-web-app-466f2d94c639.herokuapp.com/) to access and play the game!
 
 ## Project Description
 
