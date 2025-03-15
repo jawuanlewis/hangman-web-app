@@ -61,7 +61,7 @@ nav {
 
 main {
   margin: 50px;
-  padding-top: calc(15vh + 40px);
+  padding: calc(15vh + 40px) 0 50px;
 }
 
 footer {

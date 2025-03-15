@@ -1,4 +1,5 @@
 import express from 'express';
+import compression from 'compression';
 import cors from 'cors';
 import session from 'express-session';
 import path from 'path';
@@ -32,6 +33,8 @@ const allowedOrigins = [
   process.env.PROD_URL,
   process.env.STAGING_URL,
 ];
+
+app.use(compression());
 
 app.use(
   cors({

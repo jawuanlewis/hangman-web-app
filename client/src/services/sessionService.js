@@ -1,28 +1,33 @@
+import axios from 'axios';
 import { resetKeyboardState } from '@/utils/keyboardState';
+
+// Create axios instance
+const api = axios.create({
+  baseURL: '/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  withCredentials: true,
+});
+
+// Global error handler
+api.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    console.error('API Error:', {
+      status: error.response?.status,
+      statusText: error.response?.statusText,
+      data: error.response?.data,
+    });
+    return Promise.reject(error);
+  }
+);
 
 export const sessionService = {
   resetSession: async () => {
     try {
-      const response = await fetch('/api/game/reset', {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Reset session response error:', {
-          status: response.status,
-          statusText: response.statusText,
-          body: errorText,
-        });
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
       resetKeyboardState();
-
-      return await response.json();
+      return await api.post('/game/reset');
     } catch (error) {
       console.error('Error in resetSession:', error);
       throw error;

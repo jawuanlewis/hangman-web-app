@@ -5,7 +5,7 @@ const gameController = {
     try {
       const { level } = req.body;
       const answer = await getRandomWord(level.toLowerCase());
-      const preserveChars = [' ', '-', ':', ',', '.', '\''];
+      const preserveChars = [' ', '-', ':', ',', '.', "'"];
 
       req.session.level = level;
       req.session.attempts = 6;

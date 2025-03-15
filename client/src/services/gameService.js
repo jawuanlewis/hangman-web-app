@@ -1,29 +1,33 @@
+import axios from 'axios';
 import { resetKeyboardState } from '@/utils/keyboardState';
+
+// Create axios instance
+const api = axios.create({
+  baseURL: '/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  withCredentials: true,
+});
+
+// Global error handler
+api.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    console.error('API Error:', {
+      status: error.response?.status,
+      statusText: error.response?.statusText,
+      data: error.response?.data,
+    });
+    return Promise.reject(error);
+  }
+);
 
 export const gameService = {
   initGame: async (level) => {
     try {
-      const response = await fetch('/api/game/init', {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ level }),
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Initialize game response error:', {
-          status: response.status,
-          statusText: response.statusText,
-          body: errorText,
-        });
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
       resetKeyboardState();
-
-      return await response.json();
+      return await api.post('/game/init', { level });
     } catch (error) {
       console.error('Error in initGame:', error);
       throw error;
@@ -32,25 +36,7 @@ export const gameService = {
 
   getCurrGame: async () => {
     try {
-      const response = await fetch('/api/game/curr', {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Current game response error:', {
-          status: response.status,
-          statusText: response.statusText,
-          body: errorText,
-        });
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      return await response.json();
+      return await api.get('/game/curr');
     } catch (error) {
       console.error('Error in getCurrGame:', error);
       throw error;
@@ -59,26 +45,7 @@ export const gameService = {
 
   makeGuess: async (letter) => {
     try {
-      const response = await fetch('/api/game/guess', {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ letter }),
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Guess response error:', {
-          status: response.status,
-          statusText: response.statusText,
-          body: errorText,
-        });
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      return await response.json();
+      return await api.post('/game/guess', { letter });
     } catch (error) {
       console.error('Error in makeGuess:', error);
       throw error;
