@@ -1,6 +1,6 @@
 # hangman-web-app
 
-Open [this link](https://hangman-web-app-466f2d94c639.herokuapp.com/) to access and play the game!
+Open <a href="https://hangman-web-app-466f2d94c639.herokuapp.com/" target="_blank">this link</a> to access and play the game!
 
 ## Project Description
 
@@ -11,7 +11,7 @@ There are 8 available themes of words for players to guess:
 
 ## Design & Planning
 
-I used Figma to design and finalize the user interface, with some brief notes about backend control flow. Designs can be viewed [here](https://www.figma.com/design/tOop8Aqlh0zycbjdERI0Ut/Hangman?node-id=0-1&t=uR8s9pxzcX4Zwzt0-1).
+I used Figma to design and finalize the user interface, with some brief notes about backend control flow. Designs can be viewed <a href="https://www.figma.com/design/tOop8Aqlh0zycbjdERI0Ut/Hangman?node-id=0-1&t=uR8s9pxzcX4Zwzt0-1" target="_blank">here</a>.
 
 - **Step 1:** Define the app's color scheme, typography, and iconography.
 - **Step 2:** Begin designing global layout elements (Header, Nav Bar, Footer).
@@ -126,5 +126,5 @@ POST /api/game/reset     # Reset the game session
 
 ## Credits
 
-- **Social Media Icons:** [Icons8](https://icons8.com)
-- **Level Images:** generated with [ImageFX](https://labs.google/fx/tools/image-fx)
+- **Social Media Icons:** <a href="https://icons8.com" target="_blank">Icons8</a>
+- **Level Images:** generated with <a href="https://labs.google/fx/tools/image-fx" target="_blank">ImageFX</a>
