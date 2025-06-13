@@ -1,75 +1,35 @@
-# hangman-web-app
+# Hangman
 
-Open [this link](https://hangman-web-app-466f2d94c639.herokuapp.com/) to access and play the game!
+## 📚 Table of Contents
 
-## Project Description
+- [Project Overview](#-project-overview)
+- [Live Demo](#-live-demo)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Installation](#%EF%B8%8F-installation)
+- [Usage](#%EF%B8%8F-usage)
+- [Next Steps](#-next-steps)
+- [Credits](#-credits)
 
-This is source code for my own personal, web-based version of the game **_Hangman_**.
+## 🧠 Project Overview
+
+Source code for my own personal, web-based version of the game **_Hangman_**.
 There are 8 available themes of words for players to guess:
 
 - movies, video games, sports, idioms, TV shows, food, animals, and cities
 
-## Design & Planning
+## 🚀 Live Demo
 
-I used Figma to design and finalize the user interface, with some brief notes about backend control flow. Designs can be viewed [here](https://www.figma.com/design/tOop8Aqlh0zycbjdERI0Ut/Hangman?node-id=0-1&t=uR8s9pxzcX4Zwzt0-1).
+- Play the game here: [Hangman](https://hangman-web-app-466f2d94c639.herokuapp.com/)
+- Initial designs available here: [Figma Designs](https://www.figma.com/design/tOop8Aqlh0zycbjdERI0Ut/Hangman?node-id=0-1&t=uR8s9pxzcX4Zwzt0-1)
 
-- **Step 1:** Define the app's color scheme, typography, and iconography.
-- **Step 2:** Begin designing global layout elements (Header, Nav Bar, Footer).
-- **Step 3:** Design each page of the app one-by-one (starting with home page).
+## 💻 Tech Stack
 
-### Figma Best Practices
+- **Frontend:** React (Vite), CSS, ESLint
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
 
-- I created each meaningful component of the interface as its own group, to ensure the project layers were organized and hierarchical.
-- Made a separate page for each different display of the interface.
-- Wrote some supplementary notes about the app logic.
-
-## Technologies Used
-
-**Frontend:**
-
-- React.js
-- Vite (local development/testing)
-- HTML/CSS
-- ESLint
-
-**Backend**
-
-- Node.js
-- Express.js
-- MongoDB
-
-## Installation & Setup
-
-**NOTE:** In order to actually run this project locally, you would need access to the database (which is not provided here). This is meant to be my own personal project, but I will still give setup instructions below.
-
-1. Clone the repository
-
-```
-git clone https://github.com/jawuanlewis/hangman-web-app.git
-```
-
-2. Install dependencies
-
-```
-cd hangman-web-app
-npm install
-```
-
-3. Set up environment variables
-
-Create a .env file in the root directory that contains the following variables:
-
-- **SESSION_SECRET:** can be any random, secret string
-- **MONGO_URI:** uri to the MongoDB database
-- **DB_NAME:** the database name
-
-4. Run the development server
-
-```
-npm run dev
-```
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 hangman-web-app/
@@ -101,16 +61,48 @@ hangman-web-app/
 └── README.md
 ```
 
-## API Endpoints
+## ⚙️ Installation
+
+**NOTE:** In order to actually run this project locally, you would need access to the database (which is not provided here). This is meant to be my own personal project, but I will still give setup instructions below.
+
+1. Clone the repository
 
 ```
-POST /api/game/init      # Initialize game
-GET /api/game/curr       # Get current game state
-POST /api/game/guess     # Handle a user's guess
-POST /api/game/reset     # Reset the game session
+git clone https://github.com/jawuanlewis/hangman-web-app.git
 ```
 
-## Future Improvements
+2. Install dependencies
+
+```
+cd hangman-web-app
+npm install
+```
+
+3. Set up environment variables
+
+Create a .env file in the root directory that contains the following variables:
+
+- **SESSION_SECRET:** can be any random, secret string
+- **MONGO_URI:** uri to the MongoDB database
+- **DB_NAME:** the database name
+
+4. Run the development server
+
+```
+npm run dev
+```
+
+## ▶️ Usage
+
+Once the application is running, you can:
+
+1. Navigate to `http://localhost:5173` in your browser.
+2. Start by choosing a level to play.
+3. A mystery word will be displayed, along with a keyboard of letters to guess.
+4. Guess letters until you either fully reveal the word or lose all 6 attempts.
+5. You can either play the same theme/level again or return to the main menu to choose a new one!
+
+## 🔮 Next Steps
 
 **Resource Changes:**
 
@@ -124,7 +116,7 @@ POST /api/game/reset     # Reset the game session
 - Add a multiplayer page.
 - Add a "How to Play" page.
 
-## Credits
+## 🙏 Credits
 
 - **Social Media Icons:** [Icons8](https://icons8.com)
 - **Level Images:** generated with [ImageFX](https://labs.google/fx/tools/image-fx)
