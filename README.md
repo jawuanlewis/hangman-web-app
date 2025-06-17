@@ -16,12 +16,23 @@
 Source code for my own personal, web-based version of the game **_Hangman_**.
 There are 8 available themes of words for players to guess:
 
-- movies, video games, sports, idioms, TV shows, food, animals, and cities
+1. Movies
+2. Video Games
+3. Sports
+4. Idioms
+5. TV Shows
+6. Food
+7. Animals
+8. Cities
 
 ## 🚀 Live Demo
 
 - Play the game here: [Hangman](https://hangman-web-app-466f2d94c639.herokuapp.com/)
 - Initial designs available here: [Figma Designs](https://www.figma.com/design/tOop8Aqlh0zycbjdERI0Ut/Hangman?node-id=0-1&t=uR8s9pxzcX4Zwzt0-1)
+
+**Gameplay example:** Guess the letters of the mystery sport below (6 attempts).
+
+![alt text](client/src/assets/images/gameplay-sample.png)
 
 ## 💻 Tech Stack
 
