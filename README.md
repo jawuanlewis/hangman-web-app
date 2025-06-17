@@ -13,8 +13,7 @@
 
 ## 🧠 Project Overview
 
-Source code for my own personal, web-based version of the game **_Hangman_**.
-There are 8 available themes of words for players to guess:
+Source code for my own personal, web-based version of the game **_Hangman_**. In the game, players must correctly guess the letters of a given mystery word within 6 attempts. There are 8 available themes of words/phrases for players to guess:
 
 1. Movies
 2. Video Games
