@@ -26,7 +26,7 @@ Source code for my own personal, web-based version of the game **_Hangman_**. In
 
 ## 🚀 Live Demo
 
-- Play the game here: [Hangman](https://hangman-web-app-466f2d94c639.herokuapp.com/)
+- Play the game here: [Hangman](https://hangman.jawuanlewis.dev)
 - Initial designs available here: [Figma Designs](https://www.figma.com/design/tOop8Aqlh0zycbjdERI0Ut/Hangman?node-id=0-1&t=uR8s9pxzcX4Zwzt0-1)
 
 **Gameplay example:** Guess the letters of the mystery sport below (6 attempts).
