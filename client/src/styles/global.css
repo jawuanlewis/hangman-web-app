@@ -72,9 +72,9 @@ footer {
   width: 100%;
   bottom: 0;
   box-shadow: 0 -8px 30px gray;
-  & .icon-desc {
+  & .copyright {
     position: absolute;
-    right: 1em;
+    left: 1em;
   }
   & ul {
     margin: 0 auto;

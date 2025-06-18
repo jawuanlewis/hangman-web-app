@@ -18,6 +18,15 @@ const NavBar = () => {
             Home
           </Link>
         </li>
+        <li>
+          <a
+            href="https://www.jawuanlewis.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            About Me
+          </a>
+        </li>
       </ul>
     </nav>
   );
